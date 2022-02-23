@@ -11,7 +11,9 @@ function [time,ef]=StakeMeasure(~)
 % Graph of shoreline / eroding feature movement over time
 % Table of feature's distance from stake at certain datetime
 %
-% test 2
+% test develop branch 2
+
+
 % Original written by Jacquelyn R. Overbeck March 14, 2016
 % Revised to make measurements on x-axis by Richard M. Buzard June 29, 2016
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
