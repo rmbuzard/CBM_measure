@@ -9,6 +9,7 @@ function [out] = baselineReader2(~)
 % OUTPUT
 % Cell array where each cell is a structure for each stake
 %
+%
 % Written by Richard Buzard, January 17, 2018
 %% Setup
 [filename, filepath ]= uigetfile('*.xlsx','Choose Baseline Datasheet');
