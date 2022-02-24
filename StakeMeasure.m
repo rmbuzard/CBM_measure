@@ -69,7 +69,8 @@ else %%% Run calibration!
     xline = [sz(1)*2;1];            
     yline = [sz(2)*2;1];     
     f = figure;
-    imshow(I)  
+    dI = imreducehaze(I);
+    imshow(dI)  
     hFig = gcf;
     hAx  = gca;
     set(hFig,'units','normalized','outerposition',[0 0 1 1]);
