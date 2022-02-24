@@ -1,15 +1,29 @@
 %%% PLOT STAKE MEASUREMENTS
 % Plots the measurements from time-lapse cameras and CBM measurements
+%
 % INPUTS
 % .txt file(s) of time-lapse camera measurements output by StakeMeasure
 % excel baseline datasheet formatted correctly
+%
 % OUTPUTS
 % erosion rate graph
-
+%
+% REQUIRED TOOLBOXES
+% Financial Toolbox and Statistics and Machine Learning Toolbox
+%
 % Written by Richard Buzard
 % February 22, 2022
 %% Setup
 clear all; close all;
+
+% toolbox check
+if license('test','financial_toolbox') == 0
+    error('Error: missing Financial Toolbox. Go to Apps > Get More Apps to download and install toolbox.')
+end
+if license('test','statistics_toolbox') == 0
+    error('Error: missing Statistics and Machine Learning Toolbox. Go to Apps > Get More Apps to download and install toolbox.')
+end
+
 addpath(fileparts(matlab.desktop.editor.getActiveFilename)) % add code folder to paths
 [filename, filepath] = uigetfile('*.txt','Select Measurement Files', 'Multiselect','on');
 %cd(filepath)
@@ -174,6 +188,7 @@ ax.Units = 'inches';
 ax.Position = [0.25   0.25   5.5   3.5];
 box on
 ax.Layer = 'Top';
+ax.XLim(2) = ax.XLim(2) + 1;    % add day to allow CBM symbol to show up
 
 ylabel('Erosion (feet)')
 ax.XMinorTick = 'on';               % add month ticks
@@ -186,7 +201,7 @@ ax.YAxisLocation = 'right';
 for tt = 1:length(ax.XAxis.MinorTickValues)
     text(ax.XAxis.MinorTickValues(tt),...       % x location
         ax.YLim(1) + (ax.YLim(1)*0.04)/(ax.Position(4)-ax.Position(2)),...   % y location
-        num2str(month(ax.XAxis.MinorTickValues(tt))),... % month
+        num2str(month(datetime(datevec(ax.XAxis.MinorTickValues(tt))))),... % month
         'FontSize',6,'HorizontalAlignment','center')
 end
 fclose 'all';
