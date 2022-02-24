@@ -18,7 +18,6 @@ function [time,ef]=StakeMeasure(~)
 clear all; close all; clc;
 addpath(pwd)
 folder_name = uigetdir(pwd,'Choose Image Folder');      % prompt user for photos   
-cd (folder_name);
 addpath (folder_name)
 photo_dir = dir(folder_name);
 photo_dir(1) = [];                     % remove . and ..
